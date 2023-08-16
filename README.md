@@ -16,6 +16,7 @@ And simply include it:
 ### Usage
 
 ```c++
+// char type auto detection
 using my_type = ct_str_t("my_type");
 using my_wtype = ct_str_t(L"my_type");
 
