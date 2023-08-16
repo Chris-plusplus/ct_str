@@ -10,7 +10,7 @@ git submodule add 'https://github.com/Chris-plusplus/ct_strs' <extern_dir>/ct_st
 
 And simply include it:
 ```c++
-#include <ct_strs/ct_strs.hpp>
+#include <ct_strs.hpp>
 ```
 
 ### Usage
