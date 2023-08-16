@@ -129,7 +129,7 @@ constexpr auto __tuple_to_v_str(const std::tuple<Str...>&) {
 /// @brief Helper function converting Str to equivalent tuple type.
 /// @tparam Str - ct_str to converting.
 /// @return Return type is the only usable thing.
-template<class Char, ct_str Str>
+template<class Char, __ct_str_t::ct_str Str>
 constexpr auto __ct_str_to_tuple() {
 	if constexpr (sizeof(Str.value) / sizeof(Char) <= 1) {
 		return std::tuple<ct_c<Char, 0>>{};
@@ -142,19 +142,19 @@ constexpr auto __ct_str_to_tuple() {
 /// @brief Helper function converting Str to equivalent v_str type.
 /// @tparam Str - ct_str to convert. 
 /// @return Return type is the only usable thing.
-template<class Char, ct_str Str>
+template<class Char, __ct_str_t::ct_str Str>
 constexpr auto __ct_str_to_v_str() {
 	return __tuple_to_v_str<Char>(__ct_str_to_tuple<Char, Str>());
 }
 
 /// @brief Helper alias converting Str to equivalent v_str type.
 /// @tparam Str - ct_str to convert.
-template<class Char, ct_str Str>
+template<class Char, __ct_str_t::ct_str Str>
 using __ct_str_to_v_str_t = std::invoke_result_t<decltype(__ct_str_to_v_str<Char, Str>)>;
 
 /// @brief Helper class.
 ///
-template<class Char, ct_str Str, class VStr = __ct_str_to_v_str_t<Char, Str>>
+template<class Char, __ct_str_t::ct_str Str, class VStr = __ct_str_t::__ct_str_to_v_str_t<Char, Str>>
 struct __ct_str_to_t {
 	static inline constexpr const char* name = Str.value;
 	static inline constexpr const size_t length = VStr::length;
@@ -162,7 +162,7 @@ struct __ct_str_to_t {
 
 /// @brief Helper wrapper.
 ///
-template<class Char, ct_str Str>
+template<class Char, __ct_str_t::ct_str Str>
 using ct_str_to_t = __ct_str_to_t<Char, Str>;
 }
 
