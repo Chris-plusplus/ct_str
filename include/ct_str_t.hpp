@@ -27,9 +27,6 @@ using base_type = std::remove_extent_t<std::remove_cvref_t<std::remove_pointer_t
 /// @tparam C - character.
 template<class Char, Char C>
 struct ct_c {
-	/// @brief Type of character.
-	///
-	using char_t = Char;
 	/// @brief Value of character
 	///
 	static inline constexpr Char c = C;
@@ -40,10 +37,6 @@ struct ct_c {
 /// @tparam N - length of string (including null-terminator).
 template<class Char, size_t N>
 struct ct_str {
-	/// @brief Type of character.
-	///
-	using char_t = Char;
-
 	/// @brief Array based constructor.
 	///
 	constexpr ct_str(const Char(&str)[N]) noexcept {
