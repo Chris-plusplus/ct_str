@@ -32,7 +32,7 @@ struct ct_c {
 	using char_t = Char;
 	/// @brief Value of character
 	///
-	static inline constexpr char_t c = C;
+	static inline constexpr Char c = C;
 };
 
 /// @brief Allows passing string literals as parameters.
@@ -46,12 +46,12 @@ struct ct_str {
 
 	/// @brief Array based constructor.
 	///
-	constexpr ct_str(const char_t(&str)[N]) noexcept {
+	constexpr ct_str(const Char(&str)[N]) noexcept {
 		std::copy_n(str, N, value);
 	}
 	/// @brief Pointer based constructor.
 	///
-	explicit constexpr ct_str(const char_t* str) noexcept {
+	explicit constexpr ct_str(const Char* str) noexcept {
 		std::copy_n(str, N, value);
 	}
 
@@ -60,7 +60,7 @@ struct ct_str {
 	static inline constexpr size_t length = N - 1;
 	/// @brief Value of passed string.
 	///
-	char_t value[N];
+	Char value[N];
 };
 
 /// @brief Helper struct concatenating string from variadic usage of ct_c struct.
