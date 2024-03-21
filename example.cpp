@@ -22,7 +22,18 @@ using wfoo2_t =	ct_str_t(wfoo);
 using wbar_t =	ct_str_t(wbar);
 using wbar2_t =	ct_str_t(wbar);
 
+
+#define __cat3(_1, _2, _3) \
+_1##_2##_3
+
+#define cat3(...) \
+__cat3(__VA_ARGS__)
+
+struct cat3(virtual, _, base_t) {};
+
 int main() {
+
+	std::cout << typeid(cat3(virtual, _, base_t)).name() << '\n';
 	// types from the same strings with the same width are the same
 	static_assert(std::is_same_v<foo_t, foo2_t>);
 	static_assert(std::is_same_v<bar_t, bar2_t>);

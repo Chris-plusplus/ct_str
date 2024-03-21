@@ -4,6 +4,7 @@ project(ct_strs VERSION 1.0 LANGUAGES CXX C)
 set(CMAKE_CXX_STANDARD 20)
 if (MSVC)
     add_compile_options("/Zc:__cplusplus")
+    add_compile_options("/Zc:preprocessor")
 endif(MSCV)
 
 add_executable(${PROJECT_NAME}_example)
